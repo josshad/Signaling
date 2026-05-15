@@ -36,7 +36,7 @@ import Combine
  *     }
  */
 @propertyWrapper
-public struct Signaling<Action> {
+public struct CombineSignaling<Action> {
     private let dataSubject: PassthroughSubject<Action, Never>
     public let projectedValue: Signal<Action>
     public let wrappedValue: Action.Type = Action.self
@@ -51,7 +51,7 @@ public struct Signaling<Action> {
     }
 }
 
-public extension Signaling where Action == Void {
+public extension CombineSignaling where Action == Void {
     func send() {
         send(())
     }

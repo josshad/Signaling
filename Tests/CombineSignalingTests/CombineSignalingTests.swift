@@ -9,14 +9,14 @@ final class SignaingTests: XCTestCase {
             case attributedAction(Int)
         }
 
-        @Signaling<Action> var actions
+        @CombineSignaling<Action> var actions
 
         func makeSimpleAction() {
-            _actions.accept(.simpleAction)
+            _actions.send(.simpleAction)
         }
 
         func makeAttributedAction(with value: Int) {
-            _actions.accept(.attributedAction(value))
+            _actions.send(.attributedAction(value))
         }
     }
 

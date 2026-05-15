@@ -9,6 +9,7 @@ let package = Package(
     products: [
         .library(name: "CombineSignaling", targets: ["CombineSignaling"]),
         .library(name: "RxSignaing", targets: ["RxSignaing"]),
+        .library(name: "ConcurrencySignaling", targets: ["ConcurrencySignaling"])
     ],
     dependencies: [
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
@@ -16,6 +17,7 @@ let package = Package(
     ],
     targets: [
         .target(name: "CombineSignaling", dependencies: []),
+        .target(name: "ConcurrencySignaling", dependencies: []),
         .target(
             name: "RxSignaing",
             dependencies: ["RxSwift", .product(name: "RxCocoa", package: "RxSwift")]
@@ -23,6 +25,10 @@ let package = Package(
         .testTarget(
             name: "RxSignaingTests",
             dependencies: ["RxSignaing", "RxSwift"]
+        ),
+        .testTarget(
+            name: "ConcurrencySignalingTests",
+            dependencies: ["ConcurrencySignaling"]
         ),
         .testTarget(
             name: "CombineSignalingTests",
